@@ -1,15 +1,22 @@
+//Guess the number game
+
 #include <iostream>
 #include <stdio.h>
 
+int level = 1;
+
 void game();
 void play() {
-	int a=0;
-	int rnumber = rand() % 10+1;
-	for (a=0; a<=10; a++) {
+	int rnumber = rand() % 10*level+1;
+	for (int a=0; a<=10; a++) {
 		unsigned short int number;
 		std::cout<<"Enter your number:"<<std::endl;
 		std::cin>>number;
-		if (rnumber == number) {
+		if (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore();
+		}
+		else if (rnumber == number) {
 			std::cout<<"You win!"<<std::endl;
 			game();
 		}
@@ -24,22 +31,27 @@ void play() {
 	game();
 }
 void game() {
-	char input;
-	std::cout<<"[Level 1] Woul'd like to play? [p] - play, [l]- select level, [q] - quit."<<std::endl;
+	char input[1];
+	std::cout<<"[Level "<<level<< "] Woul'd like to play? [p] - play, [l] - select level, [q] - quit."<<std::endl;
 	std::cin>>input;
-	if (input == 'p') {
+	if (input[0] == 'p') {
 		std::cout<<"Starting a game..."<<std::endl;
 		play();
 	}
-	else if (input == 'l') {
-		std::cout<<"Selecting a level..."<<std::endl;
+	else if (input[0] == 'l') {
+		std::cout<<"Select a level (1-10)"<<std::endl;
+		std::cin>>level;
+		if (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore();
+		}
+		game();
 	}
 
-	else if (input == 'q') {
+	else if (input[0] == 'q') {
 		std::cout<<"Quiting..."<<std::endl;
 		exit(0);
 	}
-
 	else {
 		std::cout<<"[Error] Unknown command!"<<std::endl;
 		game();
