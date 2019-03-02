@@ -4,7 +4,6 @@
 #include <stdio.h>
 
 int level = 1;
-
 void game();
 void play() {
 	int rnumber = rand() % 10*level+1;
