@@ -1,9 +1,11 @@
 #include <iostream>
+#include <ctime>
 
 int level = 1;
 void game();
 void play() {
-	int rnumber = rand() % 10*level+1;
+	srand( time(0) );
+	int rnumber = 1 + rand() % 10 * level;
 	for (int a=0; a<=10; a++) {
 		unsigned short int number;
 		std::cout<<"Enter your number:"<<std::endl;
@@ -11,6 +13,7 @@ void play() {
 		if (std::cin.fail()) {
 			std::cin.clear();
 			std::cin.ignore();
+			std::cout<<"NaN"<<std::endl;
 		}
 		else if (rnumber == number) {
 			std::cout<<"You win!"<<std::endl;
