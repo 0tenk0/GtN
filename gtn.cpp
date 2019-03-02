@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdio.h>
 
 int level = 1;
 void game();
