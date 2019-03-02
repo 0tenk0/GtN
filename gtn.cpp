@@ -1,16 +1,17 @@
 #include <iostream>
 #include <stdio.h>
 
+void game();
 void play() {
 	int a=0;
+	int rnumber = rand() % 10+1;
 	for (a=0; a<=10; a++) {
 		unsigned short int number;
 		std::cout<<"Enter your number:"<<std::endl;
 		std::cin>>number;
-		int rnumber = rand() % 10+1;
 		if (rnumber == number) {
 			std::cout<<"You win!"<<std::endl;
-			intro();
+			game();
 		}
 		else if (rnumber < number) {
 			std::cout<<"Less!"<<std::endl;
@@ -20,8 +21,9 @@ void play() {
 		}
 	}
 	std::cout<<"You lost"<<std::endl;
+	game();
 }
-void intro() {
+void game() {
 	char input;
 	std::cout<<"[Level 1] Woul'd like to play? [p] - play, [l]- select level, [q] - quit."<<std::endl;
 	std::cin>>input;
@@ -40,9 +42,10 @@ void intro() {
 
 	else {
 		std::cout<<"[Error] Unknown command!"<<std::endl;
+		game();
 	}
 }
 
 int main() {
-	intro();
+	game();
 }
