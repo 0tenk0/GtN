@@ -1,9 +1,5 @@
 #include <iostream>
-<<<<<<< HEAD
 #include <ctime>
-=======
-#include <stdio.h>
->>>>>>> parent of 0281a16... Release version
 
 int level = 1;
 void game();
