@@ -13,7 +13,7 @@ void play() {
 		if (std::cin.fail()) {
 			std::cin.clear();
 			std::cin.ignore();
-			std::cout<<"NaN"<<std::endl;
+			std::cout<<"[Error]: NaN"<<std::endl;
 		}
 		else if (rnumber == number) {
 			std::cout<<"You win!"<<std::endl;
@@ -26,21 +26,22 @@ void play() {
 			std::cout<<"Greater!"<<std::endl;
 		}
 	}
-	std::cout<<"You lost"<<std::endl;
+	std::cout<<"You've lost!"<<std::endl;
 	game();
 }
 void game() {
 	char input[1];
-	std::cout<<"[Level "<<level<< "] Woul'd like to play? [p] - play, [l] - select level, [q] - quit."<<std::endl;
+	std::cout<<"[Level "<<level<< "] Would like to play? [p] - play, [l] - select level, [q] - quit."<<std::endl;
 	std::cin>>input;
 	if (input[0] == 'p') {
-		std::cout<<"Starting a game..."<<std::endl;
 		play();
 	}
 	else if (input[0] == 'l') {
 		std::cout<<"Select a level (1-10)"<<std::endl;
 		std::cin>>level;
+		std::cout<<"You've selected level "<<level<<" [1, "<<10*level<<"]"<<std::endl;
 		if (std::cin.fail()) {
+			std::cout<<"[Error]: NaN"<<std::endl;
 			std::cin.clear();
 			std::cin.ignore();
 		}
@@ -52,7 +53,7 @@ void game() {
 		exit(0);
 	}
 	else {
-		std::cout<<"[Error] Unknown command!"<<std::endl;
+		std::cout<<"[Error]: Unknown command!"<<std::endl;
 		game();
 	}
 }
